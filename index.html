@@ -386,7 +386,7 @@
       <div class="horizon-line"></div>
 
       <div class="hero-content">
-        <p class="hero-eyebrow">A collection by Serge</p>
+        <p class="hero-eyebrow">Board Games Online</p>
         <h1 class="hero-title">
           <span class="line1">Play</span>
           <span class="line2">My Games</span>
@@ -491,7 +491,7 @@
     </section>
 
     <footer>
-      <p class="foot-name">Games by <strong>Serge</strong></p>
+      <p class="foot-name">Games by <strong>Serge Gh.</strong></p>
       <p class="foot-copy">© 2026 — All rights reserved</p>
     </footer>
 
@@ -513,6 +513,18 @@
         c.addEventListener('mouseleave', () => { cur.classList.remove('big'); ring.classList.remove('big'); });
       });
     }
+
+    // Shuffle cards randomly on every page load (URLs stay bound to their card)
+    (function shuffleGrid() {
+      const grid = document.querySelector('.games-grid');
+      const cards = Array.from(grid.children);
+      for (let i = cards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        grid.insertBefore(cards[j], cards[i]);
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+      }
+      cards.forEach(c => grid.appendChild(c));
+    })();
 
     // Touch tap
     document.querySelectorAll('.game-card').forEach(c => {
