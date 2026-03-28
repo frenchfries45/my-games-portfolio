@@ -1,7 +1,7 @@
 {
-  "name": "sgames.me — Lebanese Party Games",
-  "short_name": "sgames",
-  "description": "Free multiplayer party games designed for Lebanese groups",
+  "name": "SGames",
+  "short_name": "SGames",
+  "description": "Free multiplayer party games designed for the Lebanese",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
