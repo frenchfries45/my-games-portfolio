@@ -17,6 +17,16 @@
 <meta name="twitter:description" content="Free online multiplayer party games by Serge Gh."/>
 
 <link rel="canonical" href="https://www.sgames.me/"/>
+
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#f4602a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="sgames">
+<link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152.png">
+<link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512.png">
   
   <title>3al Lebnene Board Games</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
@@ -383,7 +393,17 @@
   </style>
 </head>
 <body>
-
+  
+<div id="install-banner" style="display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#0f1a50;border:1px solid rgba(244,96,42,.4);border-radius:14px;padding:12px 20px;z-index:9999;align-items:center;gap:14px;font-family:'Syne',sans-serif;box-shadow:0 8px 32px rgba(0,0,0,.5);max-width:340px;width:calc(100% - 48px);">
+  <img src="/icons/icon-72.png" width="40" height="40" style="border-radius:10px;flex-shrink:0;">
+  <div style="flex:1;">
+    <div style="color:#fdf5ec;font-size:13px;font-weight:700;">Add sgames to your phone</div>
+    <div style="color:#5a6a9a;font-size:11px;margin-top:2px;">Play instantly from your home screen</div>
+  </div>
+  <button onclick="installApp()" style="background:linear-gradient(135deg,#f4602a,#ff8842);color:white;border:none;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0;">Install</button>
+  <button onclick="document.getElementById('install-banner').style.display='none'" style="background:none;border:none;color:#5a6a9a;font-size:20px;cursor:pointer;padding:0;line-height:1;">×</button>
+</div>
+  
   <div class="cursor"      id="cur"></div>
   <div class="cursor-ring" id="ring"></div>
 
@@ -603,6 +623,34 @@
     {"@type":"ListItem","position":6,"name":"Herd Mentality","url":"https://herd-mentality.lovable.app/"}
   ]
 }
+</script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('SW registered:', reg.scope))
+        .catch(err => console.log('SW failed:', err));
+    });
+  }
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    document.getElementById('install-banner').style.display = 'flex';
+  });
+  window.addEventListener('appinstalled', () => {
+    document.getElementById('install-banner').style.display = 'none';
+    deferredPrompt = null;
+  });
+  function installApp() {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {
+      deferredPrompt = null;
+      document.getElementById('install-banner').style.display = 'none';
+    });
+  }
 </script>
   
 </body>
