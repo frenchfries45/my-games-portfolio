@@ -9,7 +9,11 @@
   "background_color": "#06091a",
   "theme_color": "#f4602a",
   "lang": "en",
-  "categories": ["games", "entertainment", "social"],
+  "categories": [
+    "games",
+    "entertainment",
+    "social"
+  ],
   "icons": [
     {
       "src": "/icons/icon-72.png",
@@ -74,19 +78,45 @@
       "name": "Lebanese Imposter",
       "short_name": "Imposter",
       "url": "https://lebanese-imposter.lovable.app/",
-      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "/icons/icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
       "name": "Secret Beik",
       "short_name": "Beik",
       "url": "https://secretbeik.sgames.me/",
-      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "/icons/icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
       "name": "Herd Mentality",
       "short_name": "Herd",
       "url": "https://herd-mentality.lovable.app/",
-      "icons": [{ "src": "/icons/icon-96.png", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "/icons/icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "WhoKnows",
+      "short_name": "WhoKnows",
+      "url": "https://whoknows.sgames.me/",
+      "icons": [
+        {
+          "src": "/icons/icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ]
 }
